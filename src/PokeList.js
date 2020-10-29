@@ -11,12 +11,18 @@ export default class PokeList extends Component {
 
             return false
         })
+
+        // .filter((pokemon) => {
+        //     if (!this.props.horns) return true;
+
+        //     if (image.horns )
+        // })
         return (
             <div>
                 <div className='pokemon-list'>
                     {
                         filteredPokemon.map(pokemon =>
-                        <PokeItem className='pokemon-item' image={pokemon.url_image} name={pokemon.pokemon} type={pokemon.type_1} />)
+                        <PokeItem className='pokemon-item' image={pokemon.url_image} name={pokemon.pokemon} type={pokemon.type_1} ability={pokemon.ability_1} />)
                     }
                 </div>
             </div>
