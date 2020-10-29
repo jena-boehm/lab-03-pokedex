@@ -4,11 +4,18 @@ import data from './data.js';
 
 export default class PokeList extends Component {
     render() {
+        const filteredPokemon = data.filter((pokemon) => {
+            if (!this.props.input) return true;
+
+            if (pokemon.pokemon.includes(this.props.input)) return true;
+
+            return false
+        })
         return (
             <div>
                 <div className='pokemon-list'>
                     {
-                        data.map(pokemon =>
+                        filteredPokemon.map(pokemon =>
                         <PokeItem className='pokemon-item' image={pokemon.url_image} name={pokemon.pokemon} type={pokemon.type_1} />)
                     }
                 </div>
