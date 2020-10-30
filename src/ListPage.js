@@ -7,44 +7,47 @@ import request from 'superagent';
 
 export default class ListPage extends Component {
     state = {
-        filter: '',
-        pokemon: []
+        input: '',
+        pokemon: [],
+        order: '',
+        category: ''
+    }
+
+    componentDidMount = async () => {
+        await this.fetchPokemon();
+    }
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        await this.fetchPokemon();
     }
 
     handleChange = e => {
         this.setState({
             input: e.target.value
         });
+        console.log(e.target.value);
     }
     
-    handleSubmit = async (e) => {
-        e.preventDefault();
-        this.setState({
-            submit: this.state.input
-        })
-        await this.fetchPokemon();
-    }
-    
-    handleCategoryChange = e => {
-    this.setState({
-        input: e.target.value
+    handleCategoryChange = async (e) => {
+    await this.setState({
+        category: e.target.value
     });
+    await this.fetchPokemon();
     }
     
-    handleSortChange = e => {
-    this.setState({
-        input: e.target.value
+    handleOrderChange = async (e) => {
+    await this.setState({
+        order: e.target.value
     });
+    await this.fetchPokemon();
     }
-
-    componentDidMount = async () => {
-        await this.fetchPokemon();
-      }
 
     fetchPokemon = async () => {
-        const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?${this.state.category}=${this.state.search}&sort=${this.state.sort}`)
+        const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.input}&sort=${this.state.category}&direction=${this.state.order}`)
 
         this.setState({ pokemon: response.body.results })
+        console.log(this.state.order);
     }
 
     render() {
@@ -57,8 +60,20 @@ export default class ListPage extends Component {
                     handleSubmit={this.handleSubmit} />
                     <Dropdown 
                     handleCategoryChange={this.handleCategoryChange} 
-                    handleSortChange={this.handleSortChange} />
-                    <PokeList input={this.state.submit} />
+                    handleOrderChange={this.handleOrderChange} />
+
+                    {
+                        this.state.pokemon.length === 0
+                        ? <iframe src="https://gifer.com/embed/g0R5" 
+                            title="loading"
+                            className="loading"
+                            width="100px" 
+                            height="100px" 
+                            frameBorder="0" 
+                            allowFullScreen />
+                        : <PokeList 
+                            pokemonData={this.state.pokemon} />
+                    }
                 </div> 
             </div>
         )

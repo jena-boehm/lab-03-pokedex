@@ -5,18 +5,19 @@ export default class Dropdown extends Component {
         return (
             <div className="dropdown-section">
                 <div className="category-dropdown">
-                    <select onChange={this.props.CategoryChange}>
+                    <select onChange={this.props.handleCategoryChange} className="dropdown">
                         <option value=''>Show All</option>
-                        <option value='name'>Name</option>
-                        <option value='type'>Type</option>
-                        <option value='ability'>Ability</option>
+                        <option value='type_1'>Type 1</option>
+                        <option value='type_2'>Type 2</option>
+                        <option value='ability_1'>Ability</option>
+                        <option value='attack'>Attack</option>
                     </select>
                 </div>
                 <div className="sort-dropdown">
-                    <select onChange={this.props.handleSortChange}>
+                    <select onChange={this.props.handleOrderChange} className="dropdown">
                         <option value=''>Show All</option>
-                        <option value='ascending'>Ascending</option>
-                        <option value='descending'>Descending</option>
+                        <option value='asc'>Ascending</option>
+                        <option value='desc'>Descending</option>
                     </select>
                 </div>
             </div>

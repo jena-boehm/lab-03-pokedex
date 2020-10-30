@@ -1,28 +1,24 @@
 import React, { Component } from 'react'
 import PokeItem from './PokeItem.js'
-import data from './data.js';
+// import data from './data.js';
 
 export default class PokeList extends Component {
+    state = {
+        pokemon: []
+    }
+
     render() {
-        const filteredPokemon = data.filter((pokemon) => {
-            if (!this.props.input) return true;
-
-            if (pokemon.pokemon.includes(this.props.input)) return true;
-
-            return false
-        })
-
-        // .filter((pokemon) => {
-        //     if (!this.props.horns) return true;
-
-        //     if (image.horns )
-        // })
         return (
             <div>
                 <div className='pokemon-list'>
                     {
-                        filteredPokemon.map(pokemon =>
-                        <PokeItem className='pokemon-item' image={pokemon.url_image} name={pokemon.pokemon} type={pokemon.type_1} ability={pokemon.ability_1} />)
+                        this.props.pokemonData.map(pokemon => 
+                            <div key={pokemon.pokemon}>
+                            <img src={pokemon.url_image} alt={pokemon.pokemon} width="100" height="100" />
+                            <p>{pokemon.pokemon}</p>
+                            <p>{pokemon.type_1}</p>
+                            <p>{pokemon.type_2}</p>
+                            </div>)
                     }
                 </div>
             </div>

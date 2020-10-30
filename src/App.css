@@ -1,3 +1,7 @@
+* {
+  background: #38AECC;
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -62,3 +66,10 @@
   font-weight: bold;
 }
 
+.dropdown {
+  background-color: white;
+}
+
+.searchbar {
+  background-color: white;
+}
