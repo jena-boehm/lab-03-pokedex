@@ -28,11 +28,6 @@ export default class App extends Component {
                             exact
                             render={(routerProps) => <ListPage {...routerProps} />} 
                         />
-                        {/* <Route 
-                            path="/fetch" 
-                            exact
-                            render={(routerProps) => <FetchPage {...routerProps} />} 
-                        /> */}
                     </Switch>
                 </Router>
             </div>
