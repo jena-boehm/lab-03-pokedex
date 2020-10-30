@@ -5,7 +5,12 @@ export default class Header extends Component {
         return (
             <div className="header">
                 <div className="header-title">Pokedex</div>
-                <div className="navigation">Navigation</div>
+                <div className="navigation">
+                    <a href="/">Home</a>
+                    <span> | </span>
+                    <a href="/list">List</a> 
+
+                </div>
             </div>
         )
     }
