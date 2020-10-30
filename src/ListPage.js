@@ -26,7 +26,6 @@ export default class ListPage extends Component {
         this.setState({
             input: e.target.value
         });
-        console.log(e.target.value);
     }
     
     handleCategoryChange = async (e) => {
@@ -44,7 +43,7 @@ export default class ListPage extends Component {
     }
 
     fetchPokemon = async () => {
-        const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.input}&sort=${this.state.category}&direction=${this.state.order}`)
+        const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.input}&sort=${this.state.category}&direction=${this.state.order}&perPage=200`)
 
         this.setState({ pokemon: response.body.results })
         console.log(this.state.order);

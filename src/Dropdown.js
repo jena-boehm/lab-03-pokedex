@@ -7,6 +7,7 @@ export default class Dropdown extends Component {
                 <div className="category-dropdown">
                     <select onChange={this.props.handleCategoryChange} className="dropdown">
                         <option value=''>Show All</option>
+                        <option value='pokemon'>Name</option>
                         <option value='type_1'>Type 1</option>
                         <option value='type_2'>Type 2</option>
                         <option value='ability_1'>Ability</option>
