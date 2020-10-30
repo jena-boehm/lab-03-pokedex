@@ -8,7 +8,7 @@ export default class Header extends Component {
                 <div className="navigation">
                     <a href="/">Home</a>
                     <span> | </span>
-                    <a href="/list">List</a> 
+                    <a href="./list">List</a> 
 
                 </div>
             </div>
