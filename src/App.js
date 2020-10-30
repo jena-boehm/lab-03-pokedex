@@ -24,7 +24,7 @@ export default class App extends Component {
                             render={(routerProps) => <HomePage {...routerProps} />} 
                         />
                         <Route 
-                            path="./list" 
+                            path="/list" 
                             exact
                             render={(routerProps) => <ListPage {...routerProps} />} 
                         />
