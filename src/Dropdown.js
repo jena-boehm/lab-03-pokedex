@@ -4,7 +4,7 @@ export default class Dropdown extends Component {
     render() {
         return (
             <div className="dropdown-section">
-                <div className="category-dropdown">
+                <span className="category-dropdown">
                     <select onChange={this.props.handleCategoryChange} className="dropdown">
                         <option value=''>Show All</option>
                         <option value='pokemon'>Name</option>
@@ -13,14 +13,14 @@ export default class Dropdown extends Component {
                         <option value='ability_1'>Ability</option>
                         <option value='attack'>Attack</option>
                     </select>
-                </div>
-                <div className="sort-dropdown">
+                </span>
+                <span className="sort-dropdown">
                     <select onChange={this.props.handleOrderChange} className="dropdown">
                         <option value=''>Show All</option>
                         <option value='asc'>Ascending</option>
                         <option value='desc'>Descending</option>
                     </select>
-                </div>
+                </span>
             </div>
         )
     }

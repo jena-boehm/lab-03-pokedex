@@ -60,7 +60,6 @@ export default class ListPage extends Component {
                     <Dropdown 
                     handleCategoryChange={this.handleCategoryChange} 
                     handleOrderChange={this.handleOrderChange} />
-
                     {
                         this.state.pokemon.length === 0
                         ? <iframe src="https://gifer.com/embed/g0R5" 
@@ -71,7 +70,7 @@ export default class ListPage extends Component {
                             frameBorder="0" 
                             allowFullScreen />
                         : <PokeList 
-                            pokemonData={this.state.pokemon} />
+                            pokemonData={this.state.pokemon} className="poke-item" />
                     }
                 </div> 
             </div>
