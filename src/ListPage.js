@@ -3,6 +3,7 @@ import Searchbar from './Searchbar.js'
 import Dropdown from './Dropdown.js'
 import PokeList from './PokeList.js'
 import request from 'superagent';
+import { Link } from 'react-router-dom';
 
 
 export default class ListPage extends Component {
@@ -70,7 +71,7 @@ export default class ListPage extends Component {
                             frameBorder="0" 
                             allowFullScreen />
                         : <PokeList 
-                            pokemonData={this.state.pokemon} className="poke-item" />
+                                pokemonData={this.state.pokemon} className="poke-item" />
                     }
                 </div> 
             </div>
