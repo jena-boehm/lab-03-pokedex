@@ -14,7 +14,6 @@ componentDidMount = async () => {
 }
 
     render() {
-        console.log(this.state.pokemon);
         return (
             <div>
                 <h1>{this.props.match.params.pokemon}</h1>

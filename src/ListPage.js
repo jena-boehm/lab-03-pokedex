@@ -3,7 +3,6 @@ import Searchbar from './Searchbar.js'
 import Dropdown from './Dropdown.js'
 import PokeList from './PokeList.js'
 import request from 'superagent';
-import { Link } from 'react-router-dom';
 
 
 export default class ListPage extends Component {
@@ -44,7 +43,7 @@ export default class ListPage extends Component {
     }
 
     fetchPokemon = async () => {
-        const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.input}&sort=${this.state.category}&direction=${this.state.order}&perPage=200`)
+        const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.input}&sort=${this.state.category}&direction=${this.state.order}&perPage=20`)
 
         this.setState({ pokemon: response.body.results })
         console.log(this.state.order);
