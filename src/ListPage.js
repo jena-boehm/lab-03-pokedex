@@ -10,7 +10,9 @@ export default class ListPage extends Component {
         input: '',
         pokemon: [],
         order: '',
-        category: ''
+        category: '',
+        pageNumber: 1,
+        count: ''
     }
 
     componentDidMount = async () => {
@@ -42,11 +44,27 @@ export default class ListPage extends Component {
     await this.fetchPokemon();
     }
 
-    fetchPokemon = async () => {
-        const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.input}&sort=${this.state.category}&direction=${this.state.order}&perPage=20`)
+    handleIncrement = async () => {
+        await this.setState({
+            pageNumber: this.state.pageNumber + 1,
+        })
+        await this.fetchPokemon()
+    }
 
-        this.setState({ pokemon: response.body.results })
-        console.log(this.state.order);
+    handleDecrement = async () => {
+        await this.setState({
+            pageNumber: this.state.pageNumber - 1,
+        })
+        await this.fetchPokemon()
+    }
+
+    fetchPokemon = async () => {
+        const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.input}&sort=${this.state.category}&direction=${this.state.order}&page=${this.state.pageNumber}&perPage=20`)
+
+        this.setState({ pokemon: response.body.results, 
+            loading: false, 
+            count: response.body.count 
+        })
     }
 
     render() {
@@ -60,6 +78,22 @@ export default class ListPage extends Component {
                     <Dropdown 
                     handleCategoryChange={this.handleCategoryChange} 
                     handleOrderChange={this.handleOrderChange} />
+                        <div className="page-navigation">
+                            <div className="page-count">
+                                <span>Page: {this.state.pageNumber} / </span>
+                                <span>{Math.ceil(this.state.count / 20)}</span>
+                            </div>
+                            <div className="page-buttons">
+                                {
+                                    this.state.pageNumber !== 1 &&
+                                    <button onClick={this.handleDecrement}>Previous</button>
+                                }
+                                {
+                                    this.state.pageNumber !== Math.ceil(this.state.count / 20) &&
+                                    <button onClick={this.handleIncrement}>Next</button>
+                                }
+                            </div>
+                    </div>
                     {
                         this.state.pokemon.length === 0
                         ? <iframe src="https://gifer.com/embed/g0R5" 
