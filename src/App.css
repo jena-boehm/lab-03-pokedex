@@ -94,7 +94,7 @@ a {
 }
 
 .dropdown-section {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .category-dropdown {
@@ -110,4 +110,12 @@ a {
   height: 1000px;
   align-items: center;
   margin-top: 100px;
+}
+
+.page-navigation {
+  margin-top: 20px;
+}
+
+.page-buttons {
+  margin-top: 5px;
 }
